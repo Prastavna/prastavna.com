@@ -7,13 +7,15 @@ interface Props {
   deleteSpeed?: number
   pauseDuration?: number
   className?: string
+  pulseClassName?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   typeSpeed: 100,
   deleteSpeed: 50,
   pauseDuration: 2000,
-  className: ''
+  className: '',
+  pulseClassName: ''
 })
 
 const displayText = ref('')
@@ -70,6 +72,6 @@ onUnmounted(() => {
 <template>
   <span :class="className">
     {{ displayText }}
-    <span class="animate-pulse">|</span>
+    <span :class="pulseClassName">|</span>
   </span>
 </template>
