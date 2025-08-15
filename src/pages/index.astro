@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import Plum from '../components/Plum.vue'
+import TypeWriter from '../components/TypeWriter.vue'
 
 const currentYear = new Date().getFullYear()
 ---
@@ -12,7 +13,7 @@ const currentYear = new Date().getFullYear()
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Prastavna - Software Innovation Company</title>
-		<meta name="description" content="Prastavna (प्रस्तावना) - Building the future through innovative software solutions. Coming soon." />
+		<meta name="description" content="Prastavna (प्रस्तावना) - Completing the missing parts of the internet" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,7 +34,7 @@ const currentYear = new Date().getFullYear()
 					<div class="flex items-center justify-between">
 						<div class="flex items-center space-x-3">
 							<img src="/prastavna.png" alt="Prastavna Logo" class="w-12 h-12 object-contain">
-							<h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 bg-clip-text text-transparent">
+							<h1 class="text-2xl font-bold text-blue-500">
 								Prastavna
 							</h1>
 						</div>
@@ -49,17 +50,22 @@ const currentYear = new Date().getFullYear()
 			<main class="flex-1 flex items-center justify-center px-6 lg:px-8">
 				<div class="max-w-4xl mx-auto text-center">
 					<div class="mb-8">
-						<h2 class="text-6xl lg:text-8xl font-bold mb-4 bg-gradient-to-r from-blue-300 via-blue-600 to-blue-300 bg-clip-text text-transparent">
-							प्रस्तावना
-						</h2>
-						<h3 class="text-3xl lg:text-5xl font-light mb-6 text-slate-700">
-							Prastavna
-						</h3>
+						<TypeWriter 
+							client:load
+							texts={[
+								"Prastavna",
+								"प्रस्तावना",
+							]}
+							typeSpeed={100}
+							deleteSpeed={100}
+							pauseDuration={2500}
+							className="text-6xl lg:text-8xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-600 bg-clip-text text-transparent"
+						/>
 					</div>
 					
 					<p class="text-xl lg:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-						Building the future through innovative software solutions. 
-						We create exceptional digital experiences that transform ideas into reality.
+						Completing the missing parts of the internet. <br>
+						Building the world through innovative software and hardware solutions.
 					</p>
 					
 					<div class="mb-12">
