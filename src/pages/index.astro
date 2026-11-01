@@ -4,6 +4,130 @@ import Plum from '../components/Plum.vue'
 import TypeWriter from '../components/TypeWriter.vue'
 
 const currentYear = new Date().getFullYear()
+
+// Products are listed in this order. `logo` is a file in /public; without one, `initials` is shown.
+const products = [
+	{
+		name: 'LeetCode Compensation',
+		url: 'https://leetcode-compensation.prastavna.com/',
+		logo: '/leetcode-compensation-logo.png',
+		description: 'Near real-time software engineer compensation data for India, collected weekly from LeetCode discussions and structured with LLMs.',
+	},
+	{
+		name: 'Xodeforces',
+		url: 'https://chromewebstore.google.com/detail/xodeforces/lnfgjljnmoickkgbjedecbkcmhhdncpk',
+		logo: '/xodeforces-logo.png',
+		description: 'Browser extension that adds a Monaco code editor, code execution and smart features to Codeforces. Available for Chrome and Firefox.',
+	},
+	{
+		name: 'LeetCode Interview Questions',
+		url: 'https://leetcode-interview-questions.prastavna.com/',
+		logo: '/leetcode-interview-questions-logo.svg',
+		description: 'Automated pipeline that collects interview experiences from LeetCode discussions, structures them with AI and shows them in a searchable dashboard.',
+	},
+	{
+		name: 'Mock Screens',
+		url: 'https://chromewebstore.google.com/detail/mock-screens/lijniidfdfobehfefagkfkbepkkaipdm',
+		logo: '/mock-screens-logo.png',
+		description: "Chrome extension that mocks your screen details so websites can't learn about your real display setup.",
+	},
+	{
+		name: 'Use My Voucher',
+		url: 'https://usemyvoucher.prastavna.com/',
+		logo: '/usemyvoucher-logo.svg',
+		description: 'Community-powered voucher sharing. Post unused promo codes, find ones that still work and earn points on the leaderboard.',
+	},
+	{
+		name: 'emage',
+		url: 'https://prastavna.github.io/emage/',
+		logo: '/emage-logo.svg',
+		description: 'Privacy-first image editor that runs entirely in your browser. Crop, rotate, flip, filter and resize without uploading anything.',
+	},
+	{
+		name: 'WebScore',
+		url: 'https://prastavna.github.io/webscore/',
+		initials: 'WS',
+		description: 'Music notation and tab editor in the browser. Transcribe recordings to a score locally, play in over MIDI and compose with AI.',
+	},
+	{
+		name: 'Icons',
+		url: 'https://prastavna.github.io/icons/',
+		initials: 'IC',
+		description: 'Framework-agnostic SVG icon library for music notation: 285 icons across 34 categories, each in outline and filled variants.',
+	},
+	{
+		name: 'aiui',
+		url: 'https://prastavna.github.io/aiui/',
+		initials: 'AI',
+		description: 'Minimal, client-only AI chat UI. Bring your own key for OpenAI, Anthropic, Gemini, OpenRouter, Ollama and more. No backend.',
+	},
+	{
+		name: 'Calorack',
+		url: 'https://prastavna.github.io/calorack/',
+		initials: 'CR',
+		description: 'Fast, mobile-first calorie tracker with 16,000+ foods, including Indian dishes. Your food diary stays in your browser.',
+	},
+	{
+		name: 'Prilendar',
+		url: 'https://prastavna.github.io/prilendar/',
+		initials: 'PL',
+		description: 'Printable calendar builder for countdowns, study plans and schedules, with multiple layouts, per-day notes and colour highlights.',
+	},
+	{
+		name: 'Gallery Wipe',
+		url: 'https://github.com/Prastavna/gallery-wipe',
+		initials: 'GW',
+		description: 'Swipe through your photos and videos to free up storage: left to trash, right to keep. Mobile app for iOS and Android, in development.',
+	},
+	{
+		name: 'Gym',
+		url: 'https://gym.prastavna.com/',
+		logo: '/gym-logo.svg',
+		description: 'Interactive muscle map for browsing exercises by muscle group and planning your weekly gym schedule.',
+	},
+	{
+		name: 'Easy Todos',
+		url: 'https://chromewebstore.google.com/detail/easy-todos/bglkklmpmfmpkeaomeaipnggoakijklh',
+		logo: '/easy-todos-logo.svg',
+		description: 'Local-first todo app with priorities, deadlines, groups and filters, as a Chrome extension. No account needed; data stays in your browser.',
+	},
+	{
+		name: 'gcc.js',
+		url: 'https://prastavna.github.io/gcc.js/',
+		initials: 'GC',
+		description: 'C-to-WebAssembly compiler written in pure TypeScript. Compiles a large subset of C89 in the browser, with no server or Emscripten.',
+	},
+	{
+		name: 'Numbered Textarea',
+		url: 'https://prastavna.github.io/numbered-textarea/',
+		initials: 'NT',
+		description: 'A textarea with VS Code-style line numbers, available as a drop-in Web Component, React or Vue component.',
+	},
+	{
+		name: 'MCP Screener',
+		url: 'https://github.com/Prastavna/mcp-screener.in',
+		initials: 'MS',
+		description: 'MCP server that gives LLMs access to screener.in data: financials, ratios, shareholding, peers and custom stock screens for Indian companies.',
+	},
+	{
+		name: 'TabMap',
+		url: 'https://github.com/Prastavna/tabmap',
+		initials: 'TM',
+		description: 'Linux app for configuring graphics tablets. Remap pad and stylus buttons, touch rings and wheels from a clickable tablet mockup.',
+	},
+	{
+		name: 'Open in New Tab',
+		url: 'https://github.com/Prastavna/obsidian-open-new-tab',
+		initials: 'OT',
+		description: 'Obsidian plugin that opens files in new tabs and switches to the existing tab when a file is already open.',
+	},
+	{
+		name: 'Clean Mode',
+		url: 'https://github.com/Prastavna/clean-mode',
+		initials: 'CM',
+		description: 'Cross-platform CLI that disables your keyboard and touchpad for a few seconds so you can wipe your laptop without stray keypresses.',
+	},
+]
 ---
 
 <html lang="en">
@@ -94,150 +218,23 @@ const currentYear = new Date().getFullYear()
 					</h3>
 					
 					<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-						<!-- Product 1: LeetCode Compensation -->
-						<a href="https://leetcode-compensation.prastavna.com/" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-							<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-								<img src="/leetcode-compensation-logo.png" alt="LeetCode Compensation Logo" class="w-12 h-12 object-contain">
-							</div>
-							<h4 class="text-xl font-semibold mb-3 text-slate-800">LeetCode Compensation</h4>
-							<p class="text-slate-600 leading-relaxed">
-								Near real-time LeetCode compensation insights for India. Track software engineer salaries with automated data updates and intelligent parsing.
-							</p>
-						</a>
+						{products.map((product) => (
+							<a href={product.url} target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
+								{product.logo ? (
+									<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+										<img src={product.logo} alt={`${product.name} Logo`} class="w-12 h-12 object-contain">
+									</div>
+								) : (
+									<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 border-2 border-slate-600">
+										<span class="text-slate-600 font-bold text-lg">{product.initials}</span>
+									</div>
+								)}
+								<h4 class="text-xl font-semibold mb-3 text-slate-800">{product.name}</h4>
+								<p class="text-slate-600 leading-relaxed">{product.description}</p>
+							</a>
+						))}
 
-						<!-- Product 2: Xodeforces -->
-						<a href="https://chromewebstore.google.com/detail/xodeforces/lnfgjljnmoickkgbjedecbkcmhhdncpk" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-							<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-								<img src="/xodeforces-logo.png" alt="Xodeforces Logo" class="w-12 h-12 object-contain">
-							</div>
-							<h4 class="text-xl font-semibold mb-3 text-slate-800">Xodeforces</h4>
-							<p class="text-slate-600 leading-relaxed">
-								Chrome extension that enhances Codeforces with an integrated Monaco code editor. Available on Chrome Web Store for competitive programming.
-							</p>
-						</a>
-
-						<!-- Product 3: LeetCode Interview Questions -->
-						<a href="https://leetcode-interview-questions.prastavna.com/" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-							<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-								<img src="/leetcode-interview-questions-logo.svg" alt="LeetCode Interview Questions Logo" class="w-12 h-12 object-contain">
-							</div>
-							<h4 class="text-xl font-semibold mb-3 text-slate-800">LeetCode Interview Questions</h4>
-							<p class="text-slate-600 leading-relaxed">
-								Automated pipeline that discovers and parses LeetCode interview discussions into a structured dataset with a Vue dashboard for insights.
-							</p>
-						</a>
-
-						<!-- Product 4: Mock Screens -->
-						<a href="https://chromewebstore.google.com/detail/mock-screens/lijniidfdfobehfefagkfkbepkkaipdm" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-							<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-								<img src="/mock-screens-logo.png" alt="Mock Screens Logo" class="w-12 h-12 object-contain">
-							</div>
-							<h4 class="text-xl font-semibold mb-3 text-slate-800">Mock Screens</h4>
-							<p class="text-slate-600 leading-relaxed">
-								Browser extension built with TypeScript and Vite to inject custom scripts and mock multi-screen behavior in modern browsers.
-							</p>
-						</a>
-
-					<!-- Product 5: Use My Voucher -->
-					<a href="http://usemyvoucher.prastavna.com/" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-						<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-							<img src="/usemyvoucher-logo.svg" alt="Use My Voucher Logo" class="w-12 h-12 object-contain">
-						</div>
-						<h4 class="text-xl font-semibold mb-3 text-slate-800">Use My Voucher</h4>
-						<p class="text-slate-600 leading-relaxed">
-							Community-powered voucher sharing app with contributor points, reports, and usage tracking built on Vue and Supabase.
-						</p>
-					</a>
-
-					<!-- Product 6: emage -->
-					<a href="https://prastavna.github.io/emage/" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-						<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-							<img src="/emage-logo.svg" alt="emage Logo" class="w-12 h-12 object-contain">
-						</div>
-						<h4 class="text-xl font-semibold mb-3 text-slate-800">emage</h4>
-						<p class="text-slate-600 leading-relaxed">
-							Privacy-first image manipulation tool that runs entirely in your browser. Crop, rotate, filter, resize—all without uploading.
-						</p>
-					</a>
-
-					<!-- Product 7: icons -->
-						<a href="https://prastavna.github.io/icons/" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-							<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 border-2 border-slate-600">
-								<span class="text-slate-600 font-bold text-lg">IC</span>
-							</div>
-							<h4 class="text-xl font-semibold mb-3 text-slate-800">Icons</h4>
-							<p class="text-slate-600 leading-relaxed">
-								A curated icon library for developers. Browse and use clean, consistent icons for your projects.
-							</p>
-						</a>
-
-						<!-- Product 8: easy-todos -->
-						<a href="https://chromewebstore.google.com/detail/easy-todos/bglkklmpmfmpkeaomeaipnggoakijklh" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-							<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-								<img src="/easy-todos-logo.svg" alt="Easy Todos Logo" class="w-12 h-12 object-contain">
-							</div>
-							<h4 class="text-xl font-semibold mb-3 text-slate-800">Easy Todos</h4>
-							<p class="text-slate-600 leading-relaxed">
-								A lightweight Chrome extension to manage your todos directly from the browser. Simple, fast, and distraction-free.
-							</p>
-						</a>
-
-						<!-- Product 9: gym -->
-						<a href="https://gym.prastavna.com/" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-							<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-								<img src="/gym-logo.svg" alt="Gym Logo" class="w-12 h-12 object-contain">
-							</div>
-							<h4 class="text-xl font-semibold mb-3 text-slate-800">Gym</h4>
-							<p class="text-slate-600 leading-relaxed">
-								A gym tracking app to log workouts, track progress, and stay consistent with your fitness goals.
-							</p>
-						</a>
-
-						<!-- Product 10: gcc.js -->
-						<a href="https://prastavna.github.io/gcc.js/" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-							<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 border-2 border-slate-600">
-								<span class="text-slate-600 font-bold text-lg">GC</span>
-							</div>
-							<h4 class="text-xl font-semibold mb-3 text-slate-800">gcc.js</h4>
-							<p class="text-slate-600 leading-relaxed">
-								Run GCC compilation in the browser with JavaScript. Compile and test C/C++ code without any local setup.
-							</p>
-						</a>
-
-						<!-- Product 11: mcp-screener.in -->
-						<a href="https://github.com/Prastavna/mcp-screener.in" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-							<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 border-2 border-slate-600">
-								<span class="text-slate-600 font-bold text-lg">MS</span>
-							</div>
-							<h4 class="text-xl font-semibold mb-3 text-slate-800">MCP Screener</h4>
-							<p class="text-slate-600 leading-relaxed">
-								A screener tool for discovering and evaluating MCP (Model Context Protocol) servers for AI development workflows.
-							</p>
-						</a>
-
-						<!-- Product 12: numbered-textarea -->
-						<a href="https://prastavna.github.io/numbered-textarea/" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-							<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 border-2 border-slate-600">
-								<span class="text-slate-600 font-bold text-lg">NT</span>
-							</div>
-							<h4 class="text-xl font-semibold mb-3 text-slate-800">Numbered Textarea</h4>
-							<p class="text-slate-600 leading-relaxed">
-								A web component that adds line numbers to any textarea. Drop-in enhancement for code editors and text inputs.
-							</p>
-						</a>
-
-						<!-- Product 13: clean-mode -->
-						<a href="https://github.com/Prastavna/clean-mode" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl block">
-							<div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 border-2 border-slate-600">
-								<span class="text-slate-600 font-bold text-lg">CM</span>
-							</div>
-							<h4 class="text-xl font-semibold mb-3 text-slate-800">Clean Mode</h4>
-							<p class="text-slate-600 leading-relaxed">
-								Strip away distractions from web pages for a focused, clean reading and browsing experience.
-							</p>
-						</a>
-
-					<!-- Product 14: Coming Soon -->
+						<!-- Coming Soon -->
 						<div class="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
 							<div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
 								<svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
